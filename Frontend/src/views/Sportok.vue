@@ -72,11 +72,13 @@
           :size="size"
           @yesEvent="yesEventHandler"
         >
+        <!-- Igen/Nem válasz -->
           <div v-if="state == 'Delete'">
             {{ messageYesNo }}
           </div>
 
-          <SportForm
+          <!-- Beviteli form -->
+          <ItemForm
             v-if="state == 'Create' || state == 'Update'"
             :itemForm="item"
             :debug="debug"
@@ -101,6 +103,7 @@
 </template>
     
 <script>
+// Módosítás
 class Item {
   constructor(id = null, sportNev = null) {
     this.id = id;
@@ -111,14 +114,17 @@ import { BASE_URL } from "../helpers/baseUrls";
 import { DEBUG } from "../helpers/debug";
 import ErrorMessage from "@/components/ErrorMessage.vue";
 import { useAuthStore } from "@/stores/useAuthStore.js";
-import SportForm from "@/components/SportForm.vue";
+// Módosítás
+import ItemForm from "@/components/SportForm.vue";
 import OperationsCrud from "@/components/OperationsCrud.vue";
 import axios from "axios";
 import * as bootstrap from "bootstrap";
 export default {
-  components: { SportForm, OperationsCrud, ErrorMessage },
+  components: { ItemForm, OperationsCrud, ErrorMessage },
   data() {
     return {
+      // Módosítás
+      urlBase: BASE_URL,
       urlApi: `${BASE_URL}/sports`,
       stateAuth: useAuthStore(),
       items: [],
@@ -199,6 +205,7 @@ export default {
         Authorization: `Bearer ${token}`,
       };
 
+      // Módosítás
       const data = {
         sportNev: this.item.sportNev,
       };
@@ -222,6 +229,7 @@ export default {
         Authorization: `Bearer ${this.stateAuth.token}`,
       };
 
+      // Módosłtás
       const data = {
         sportNev: this.item.sportNev,
       };
@@ -244,7 +252,8 @@ export default {
     onClickDeleteButton(item) {
       this.state = "Delete";
       this.title = "Törlés";
-      this.messageYesNo = `Valóban törölni akarod a(z) ${item.sportNev} nevű sportot?`;
+      // Módosítás
+      this.messageYesNo = `Valóban törölni akarod a(z) ${item.sportNev} nevű elemet?`;
       this.yes = "Igen";
       this.no = "Nem";
       this.size = null;
@@ -252,7 +261,7 @@ export default {
 
     onClickUpdate(item) {
       this.state = "Update";
-      this.title = "Sport módosítása";
+      this.title = "Elem módosítása";
       this.yes = null;
       this.no = "Mégsem";
       this.size = "lg";
