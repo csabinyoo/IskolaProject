@@ -16,7 +16,7 @@ import Modal from './components/Modal.vue'
 
 const app = createApp(App)
 
-app.component("Modal",Modal);
+app.component("Modal", Modal);
 
 app.use(createPinia())
 app.use(router)

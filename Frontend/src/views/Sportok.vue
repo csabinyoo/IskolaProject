@@ -16,10 +16,12 @@
         </div>
 
         <div class="col-12 col-lg-10 tabla-container" v-if="items.length > 0">
+          <!-- Táblázat -->
           <table
             class="table table-bordered table-hover table-striped shadow-sm rounded"
           >
             <thead class="table-dark">
+              <!-- Módosítás -->
               <tr>
                 <th v-if="debug">#</th>
                 <th>Sport Név</th>
@@ -27,6 +29,7 @@
               </tr>
             </thead>
             <tbody>
+              <!-- Módosítás -->
               <tr
                 v-for="item in paginatedCollections"
                 :key="item.id"
@@ -47,6 +50,8 @@
                     <span class="visually-hidden m-0">Loading...</span>
                   </span>
                 </td>
+
+                <!-- CRUD gombok component -->
                 <td class="text-nowrap text-center">
                   <OperationsCrud
                     @onClickDeleteButton="onClickDeleteButton"
