@@ -304,7 +304,7 @@ export default {
     onClickDeleteButton(item) {
       this.state = "Delete";
       this.title = "Törlés";
-      this.messageYesNo = `Valóban törölni akarod a(z) ${item.nev} nevű sportot?`;
+      this.messageYesNo = `Valóban törölni akarod a(z) ${item.nev} nevű diákot?`;
       this.yes = "Igen";
       this.no = "Nem";
       this.size = null;
@@ -312,7 +312,7 @@ export default {
 
     onClickUpdate(item) {
       this.state = "Update";
-      this.title = "Sport módosítása";
+      this.title = "Diák módosítása";
       this.yes = null;
       this.no = "Mégsem";
       this.size = "lg";
@@ -320,7 +320,7 @@ export default {
     },
 
     onClickCreate() {
-      this.title = "Új adat bevitele";
+      this.title = "Új diák bevitele";
       this.yes = null;
       this.no = "Mégsem";
       this.size = "lg";
